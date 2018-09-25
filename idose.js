@@ -74,15 +74,15 @@ var idose = function(dbot) {
 
             if(_.has(drug, 'formatted_onset')) {
               if(_.has(drug.formatted_onset, roa)) {
-                out += ' You should start to feel effects ' + drug.formatted_onset[roa] + ' ' + drug.formatted_onset._unit + ' from now.'
+                out += ' You should start to feel effects ' + drug.formatted_onset[roa] + ' ' + (drug.formatted_onset._unit ? (drug.formatted_onset._unit + ' ') : '') + 'from now.'
               } else if(_.has(drug.formatted_onset, 'value')) {
-                out += ' You should start to feel effects ' + drug.formatted_onset.value + ' ' + drug.formatted_onset._unit + ' from now.'
+                out += ' You should start to feel effects ' + drug.formatted_onset.value + ' ' + (drug.formatted_onset._unit ? (drug.formatted_onset._unit + ' ') : '') + 'from now.'
               }
             }
             out += ' (BTW, you can run ~set upidose true to have tripbot upload an encrypted version of your dose history to you upon updates).'
             event.reply(out);
 
-            if(event.rProfile.upidose == "true") {
+            if(event.rProfile.upidose === "true") {
               self.api.alsutu(event.rUser, tz);
             }
           });
