@@ -96,7 +96,10 @@ var idose = function(dbot) {
       this.api.getLastDose(event.rUser, function(lDose) {
         if(lDose) {
           var tz = event.rProfile.timezone || 'Europe/London';
-          var out = 'You last dosed ' + lDose.dose + ' of ' + lDose.drug + ' ' + moment(lDose.time).toNow(true) + ' ago (' + moment(lDose.time).tz(tz).format('HH:mm:ss on DD/MM/YYYY') + ').';
+          var out = 'You last dosed ' + lDose.dose + ' of ' + lDose.drug 
+                  + ' ' + moment(lDose.time).toNow(true) + ' ago (' 
+                  + moment(lDose.time).tz(tz).format('HH:mm:ss on DD/MM/YYYY') 
+                  + ' ' + tz + ').';
           event.reply(out);
         } else {
           event.reply('No last dose recorded');
