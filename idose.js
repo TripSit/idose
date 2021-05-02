@@ -1,4 +1,4 @@
-/** 
+/**
  * Module Name: idose
  * Description: dose recording
  */
@@ -45,9 +45,9 @@ var idose = function(dbot) {
 
       function puts(error, stdout, stderr) { 
         var res = stdout.split('\n');        
-        dbot.say(user.id.split('.')[1], user.primaryNick, 'New idose log at: ' + res[res.length-3]); 
+        dbot.say(user.id.split('.')[1], user.primaryNick, 'New idose log at: ' + res); 
       }
-      exec("/home/node/alsuti/bin/alsuti -p "+randomString(12, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')+" /tmp/"+user.id+'dd.txt', puts);
+      exec("/bin/curl -sT "+"/tmp/"+user.id+'dd.txt '+"https://hugz.io/"+randomString(12, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'), puts);
     }
   };
 
